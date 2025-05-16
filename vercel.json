@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "ussd_app.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/ussd",
+            "methods": ["POST"],
+            "dest": "ussd_app.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "ussd_app.js"
+        }
+    ]
+}
