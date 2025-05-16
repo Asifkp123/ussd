@@ -3,21 +3,24 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware to parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Add a root route for debugging
 app.get('/', (req, res) => {
     res.send('USSD App is running. Use POST /ussd for USSD requests.');
 });
 
+// USSD endpoint
 app.post('/ussd', (req, res) => {
     const { sessionId, serviceCode, phoneNumber, text } = req.body;
     let response = '';
     if (!text) {
         response = `CON Language Frameworks:
-1. Java
-2. Python
-3. PHP
+1. ASIF
+2. FAZIL
+3. IRSHAD
 4. JavaScript`;
     } else {
         const textArray = text.split('*');
@@ -25,18 +28,18 @@ app.post('/ussd', (req, res) => {
         switch (userInput) {
             case '1':
                 response = `END Java Frameworks:
-1. SpringBoot
+1. ASIF ASIFASIFASIFASIF
 2. Apache Struts`;
                 break;
             case '2':
                 response = `END Python Frameworks:
-1. Flask
+1. FAZIL FAZIL FAZIL
 2. Django
 3. PyTorch`;
                 break;
             case '3':
                 response = `END PHP Frameworks:
-1. Laravel
+1. IRSHAD IRSHADIRSHADIRSHAD
 2. Symfony
 3. CodeIgniter`;
                 break;
@@ -55,6 +58,7 @@ app.post('/ussd', (req, res) => {
     res.send(response);
 });
 
+// Start server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
