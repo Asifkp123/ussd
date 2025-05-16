@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Add a root route for debugging
 app.get('/', (req, res) => {
-    res.send('USSD App is running. Use POST /ussd for USSD requests.23 28');
+    res.send('USSD App is running. Use POST /ussd for USSD requests.23 29');
 });
 
 // USSD endpoint
